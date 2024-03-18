@@ -10,6 +10,7 @@ class Player
 {
 public:
 
+	// Player(string n = "Player") : name(n), ID(0) {}
 	Player(string n);
 	~Player();
 	void setName(string n);

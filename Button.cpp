@@ -2,6 +2,7 @@
 
 Button::Button()
 {
+	//this->buttonShape.
 }
 
 Button::Button(int screenOffsetPosX, int screenOffsetPosY, vector<string> textureIDList)

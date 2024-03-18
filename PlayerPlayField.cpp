@@ -6,6 +6,7 @@ PlayerPlayField::PlayerPlayField(Player p1) : player(p1)
 	this->setPlayACardButtonCoordOffset(10.0, 20.0);	
 	this->playButtonRect.w = 100;
 	this->playButtonRect.h = 40;
+	this->setPlayACardButtonActiveState(1);
 }
 
 PlayerPlayField::~PlayerPlayField()
@@ -42,10 +43,23 @@ void PlayerPlayField::showPlayerDeck()
 	}
 }
 
+void PlayerPlayField::emptyDeck()
+{
+	while (!this->playerDeck.empty())
+	{
+		this->playerDeck.pop();
+	}
+}
+
 void PlayerPlayField::setPlayACardButtonCoordOffset(double x, double y)
 {
 	this->playACardButtonCoordOffset.x = x;
 	this->playACardButtonCoordOffset.y = y;
+}
+
+void PlayerPlayField::setPlayACardButtonActiveState(bool state)
+{
+	this->playACardButtonActive = state;
 }
 
 void PlayerPlayField::setDeckCounterFieldCoordOffset(double x, double y)
@@ -64,12 +78,24 @@ Coords PlayerPlayField::getPlayACardButtonCoordOffset()
 	return this->playACardButtonCoordOffset;
 }
 
+bool PlayerPlayField::isPlayACardButtonActive()
+{
+	return this->playACardButtonActive;
+}
+
 Coords PlayerPlayField::getDeckCounterFieldCoordOffset()
 {
 	return this->deckCounterFieldCoordOffset;
 }
 
+
+
 SDL_Rect PlayerPlayField::getPlayButtonRect()
 {
+	//Coords tempCoords;
+	//tempCoords.x = this->playButtonRect.x;
+	//tempCoords.y = this->playButtonRect.y;
+
+	//return tempCoords;
 	return this->playButtonRect;
 }

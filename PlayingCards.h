@@ -24,6 +24,7 @@ private:
 
 	void formDeck();
 	vector<string> type = { "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A" };
+	// vector<int> power = { 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 14, 15 }; // трябва да е изнесена другаде, понеже на различните игри, картите имат различна сила
 	vector<string> suit = { "Spades", "Diamonds", "Hearts", "Clubs" };
 	
 };

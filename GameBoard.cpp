@@ -2,6 +2,7 @@
 
 GameBoard::GameBoard(vector<PlayerPlayField> pFields, PlayingCards deck) : playerFields(pFields), dealersDeck(deck), titleField("War!")
 {
+	//cout << this->playerFields.size();
 	sittedPlayers = pFields.size();
 	
 	for (int i = 0; i < sittedPlayers; i++)
@@ -14,6 +15,7 @@ GameBoard::GameBoard(vector<PlayerPlayField> pFields, PlayingCards deck) : playe
 	}
 
 	this->setStartButtonCoordinates(currentWindowWidth - 200, currentWindowHeight - 100);
+	this->startButtonVisible = 1;
 	this->setSettingsButtonCoords(currentWindowWidth - 50, currentWindowHeight - 50);
 	this->setScoreButtonCoords(currentWindowWidth - 100, currentWindowHeight - 50);
 	
@@ -32,10 +34,10 @@ void GameBoard::sitPlayers()
 		cout << "Can not play solo! " << endl;
 		break;
 	case 2:
-		cout << "Game setting up for two players.. " << endl;
+		cout << "Positioning two players.. " << endl;
 		break;
 	case 3:
-		cout << "Game setting up for three players.. " << endl;
+		cout << "Positioning three players.. " << endl;
 
 		playersPos[0].x = 50;
 		playersPos[0].y = currentWindowHeight / 2 - 55 /* -40 if gonna be flipped 90 degrees */;
@@ -73,13 +75,13 @@ void GameBoard::sitPlayers()
 
 		break;
 	case 4:
-		cout << "Game setting up for four players.. " << endl;
+		cout << "Positioning four players.. " << endl;
 		break;
 	case 5:
-		cout << "Game setting up for five players.. " << endl;
+		cout << "Positioning five players.. " << endl;
 		break;
 	case 6:
-		cout << "Game setting up for six players.. " << endl;
+		cout << "Positioning six players.. " << endl;
 		break;
 	default:
 		cout << "Waiting for more players.. " << endl;
@@ -103,6 +105,11 @@ void GameBoard::setStartButtonCoordinates(double x, double y)
 	this->startButtonCoordinates.y = y;
 }
 
+void GameBoard::setStartButtonVisibility(bool value)
+{
+	this->startButtonVisible = value;
+}
+
 void GameBoard::setScoreButtonCoords(double x, double y)
 {
 	this->scoreButtonCoordinates.x = x;
@@ -115,9 +122,19 @@ void GameBoard::setSettingsButtonCoords(double x, double y)
 	this->settingsButtonCoordinates.y = y;
 }
 
+int GameBoard::getSittedPlayers()
+{
+	return this->sittedPlayers;
+}
+
 string GameBoard::getTitle()
 {
 	return this->titleField;
+}
+
+PlayerPlayField GameBoard::getPlayerPlayField(int index)
+{
+	return this->playerFields[index];
 }
 
 Coords GameBoard::getPlayerPos(int playerID)
@@ -125,9 +142,19 @@ Coords GameBoard::getPlayerPos(int playerID)
 	return this->playersPos[playerID - 1];
 }
 
+Coords GameBoard::getPlayFieldZones(int playerID)
+{
+	return this->playFieldZones[playerID-1];
+}
+
 Coords GameBoard::getStartButtonCoords()
 {
 	return this->startButtonCoordinates;
+}
+
+bool GameBoard::getStartButtonState()
+{
+	return this->startButtonVisible;
 }
 
 Coords GameBoard::getScoreButtonCoords()
