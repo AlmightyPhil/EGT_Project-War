@@ -1,2 +1,2 @@
 # EGT_Project-War
-![Image Alt text](/Project-War.png)
+![Very Quick CLass Diagram](/Project-War_Class-Diagram.png)
