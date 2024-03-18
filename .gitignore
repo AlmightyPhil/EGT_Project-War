@@ -2,5 +2,5 @@
 
 *.exe
 
-
-cmake/
+#Ignore all executables and built files
+build/
